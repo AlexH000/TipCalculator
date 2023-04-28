@@ -1,0 +1,36 @@
+#results {
+    display:none;
+  }
+
+/* Styling for card */
+.card {
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.card h1 {
+  color: black;
+  font-weight:bold;
+}
+
+.card hr {
+  border: none;
+}
+
+/* Styling for the results section */
+#results {
+  text-align: left;
+}
+
+#results h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#results .form-control {
+  font-weight: bold;
+}
