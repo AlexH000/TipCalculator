@@ -1,18 +1,36 @@
-document.querySelector('#tip-form').onchange = function(){
+// Retrieve Inputs
+const billTotal = document.querySelector('#billTotal');
+const tipInput = document.querySelector('#tipInput');
+const tipOutput = document.querySelector('#tipOutput');
+const numPeople = document.querySelector('#numPeople');
+const tipAmount = document.querySelector('#tipAmount');
+const totalBillWithTip = document.querySelector('#totalBillWithTip');
+const totalPerPerson = document.querySelector('#totalPerPerson');
 
-    var bill = Number(document.getElementById('billTotal').value);
-    var tip = document.getElementById('tipInput').value;
-    document.getElementById('tipOutput').innerHTML = `${tip}%`;
-    var tipValue = bill * (tip/100)
-    var finalBill = bill + tipValue
-  console.log(finalBill)
-  var tipAmount = document.querySelector('#tipAmount')
-  var totalBillWithTip = document.querySelector('#totalBillWithTip')
-  
-  tipAmount.value = tipValue.toFixed(2);
-   totalBillWithTip.value =finalBill.toFixed(2);
-  
-   //Show Results
-  
-    document.getElementById('results').style.display='block'
-  }
+// Calculate and display tip amount, total bill with tip, and total per person
+function calculateTip() {
+  // Get values from input elements
+  const bill = parseFloat(billTotal.value);
+  const tipPercent = parseInt(tipInput.value);
+  const people = parseInt(numPeople.value);
+
+  // Calculate tips
+  const tip = bill * (tipPercent / 100);
+  const total = bill + tip;
+  const perPerson = total / people;
+
+  // show calculated values
+  tipAmount.value = tip.toFixed(2);
+  totalBillWithTip.value = total.toFixed(2);
+  totalPerPerson.value = perPerson.toFixed(2);
+}
+
+// Update tip display
+tipInput.addEventListener('input', () => {
+  tipOutput.textContent = tipInput.value + '%';
+});
+
+// Recalculate tip when change
+billTotal.addEventListener('input', calculateTip);
+tipInput.addEventListener('input', calculateTip);
+numPeople.addEventListener('input', calculateTip);
